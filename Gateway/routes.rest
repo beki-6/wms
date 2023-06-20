@@ -57,5 +57,5 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OGVhOGRkM
 }
 
 ######
-GET http://localhost:3001/api/birth/subscribe
+GET http://localhost:3001/api/birth/pending
 ######
