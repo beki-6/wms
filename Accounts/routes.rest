@@ -1,0 +1,44 @@
+GET http://localhost:3000/api/account
+
+#########
+GET http://localhost:3000/api/account/646f291ba5255bc92c59a32b
+#########
+DELETE http://localhost:3000/api/account/646f291ba5255bc92c59a32b
+
+#########
+POST http://localhost:3000/api/account
+Content-Type: application/json
+
+{
+    "username": "Dream",
+    "email": "dreammaker.com",
+    "password": "coolguywithcoolboots",
+    "role": "VEP"
+}
+#########
+POST http://localhost:3000/api/login
+Content-Type: application/json
+
+{
+    "email": "dreammaker.com",
+    "password": "coolguywithcoolboots"
+}
+#########
+PATCH http://localhost:3000/api/account/646f291ba5255bc92c59a32b
+Content-Type: application/json
+
+{
+    "username": "Beelzebub"
+}
+
+#########
+POST http://localhost:3000/department
+Content-Type: application/json
+
+{
+    "name": "Biology",
+    "numberOfStudents": 22,
+    "students": [
+        "646c87a10424bf9d998f03a6"
+        ]
+}

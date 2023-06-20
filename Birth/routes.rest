@@ -1,0 +1,42 @@
+GET http://localhost:3000/api/birth
+
+#########
+GET http://localhost:3000/api/birth/646e1528bfde8e7a48d23adf
+#########
+DELETE http://localhost:3000/api/birth/646e14ce4aa2c1d1a99f4cab
+
+#########
+POST http://localhost:3000/api/birth
+Content-Type: application/json
+
+{
+    "nameOfChild": "Lucifer",
+    "sex": "M",
+    "placeOfBirth": "Heaven",
+    "deliveryMethod": "Created by God Almighty",
+    "nationality": "Hell",
+    "weight": 666,
+    "attendantProfessional": "The Holy Spirit was in attendance the entire time",
+    "motherResidentInfo": "6464fa305496f5bffdad2a9e",
+    "fatherResidentInfo": "6465f6643b088cf9b06c3d17"
+}
+
+#########
+PATCH http://localhost:3000/api/birth/646e1528bfde8e7a48d23adf
+Content-Type: application/json
+
+{
+    "nationality": "Brazilian"
+}
+
+#########
+POST http://localhost:3000/department
+Content-Type: application/json
+
+{
+    "name": "Biology",
+    "numberOfStudents": 22,
+    "students": [
+        "646c87a10424bf9d998f03a6"
+        ]
+}

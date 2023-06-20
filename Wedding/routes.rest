@@ -1,0 +1,38 @@
+GET http://localhost:3000/api/wedding
+
+#########
+GET http://localhost:3000/api/wedding/646e4f92c2cffd703d3f09ae
+#########
+DELETE http://localhost:3000/api/wedding/646e4f92c2cffd703d3f09ae
+
+#########
+POST http://localhost:3000/api/wedding
+Content-Type: application/json
+
+{
+    "certificateNumber": "666",
+    "wifeResidentInfo": "6465f6643b088cf9b06c3d17",
+    "husbandResidentInfo": "6465f6643b088cf9b06c3d17",
+    "placeOfMarriageRegistration": "4 kilo",
+    "nameOfCivilRegistrar": "Jason Stathem"
+}
+
+#########
+PATCH http://localhost:3000/api/wedding/646e4f92c2cffd703d3f09ae
+Content-Type: application/json
+
+{
+    "nameOfCivilRegistrar": "What's happening with 'em sausages, Charlie?"
+}
+
+#########
+POST http://localhost:3000/department
+Content-Type: application/json
+
+{
+    "name": "Biology",
+    "numberOfStudents": 22,
+    "students": [
+        "646c87a10424bf9d998f03a6"
+        ]
+}

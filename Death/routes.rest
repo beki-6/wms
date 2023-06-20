@@ -1,0 +1,37 @@
+GET http://localhost:3000/api/death
+
+#########
+GET http://localhost:3000/api/death/646e3d6c74a2803ff38ee50c
+#########
+DELETE http://localhost:3000/api/death/646e3d6c74a2803ff38ee50c
+
+#########
+POST http://localhost:3000/api/death
+Content-Type: application/json
+
+{
+    "deceasedResidentInfo": "6465f6643b088cf9b06c3d17",
+    "placeOfDeath": "In bed with a women's mouth around my cock",
+    "nameOfCivilRegistrar": "Angel of Death",
+    "certificateNumber": "666"
+}
+
+#########
+PATCH http://localhost:3000/api/death/646e3d6c74a2803ff38ee50c
+Content-Type: application/json
+
+{
+    "placeOfDeath": "In the middle of the ocean, blood and guts everywhere"
+}
+
+#########
+POST http://localhost:3000/department
+Content-Type: application/json
+
+{
+    "name": "Biology",
+    "numberOfStudents": 22,
+    "students": [
+        "646c87a10424bf9d998f03a6"
+        ]
+}

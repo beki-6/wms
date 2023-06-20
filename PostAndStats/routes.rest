@@ -1,0 +1,36 @@
+GET http://localhost:3000/api/posts
+
+#########
+GET http://localhost:3000/api/post/646f291ba5255bc92c59a32b
+#########
+DELETE http://localhost:3000/api/post/646f307e44e4978441cbc7a2
+
+#########
+POST http://localhost:3000/api/post
+Content-Type: application/json
+
+{
+    "title": "Abracdabra bitch",
+    "topic": "Magic",
+    "body": "Roses are red, violets are blue, Abracdabra bitch"
+}
+
+#########
+PATCH http://localhost:3000/api/post/646f307e44e4978441cbc7a2
+Content-Type: application/json
+
+{
+    "topic": "Witchcraft"
+}
+
+#########
+POST http://localhost:3000/department
+Content-Type: application/json
+
+{
+    "name": "Biology",
+    "numberOfStudents": 22,
+    "students": [
+        "646c87a10424bf9d998f03a6"
+        ]
+}

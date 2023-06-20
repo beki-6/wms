@@ -1,0 +1,24 @@
+GET http://localhost:3000/api/residents
+
+#########
+GET http://localhost:3000/api/id/646f0211a707afb688be9c22
+#########
+DELETE http://localhost:3000/api/id/646f0211a707afb688be9c22
+
+#########
+POST http://localhost:3000/api/id
+Content-Type: application/json
+
+{
+    "residentInfo": "6464fa305496f5bffdad2a9e",
+    "idNumber": "5455454754",
+    "registrationNumber": "5455454754"
+}
+
+#########
+PATCH http://localhost:3000/api/id/646f0211a707afb688be9c22
+Content-Type: application/json
+
+{
+    "registrationNumber": "8073240773489"
+}
