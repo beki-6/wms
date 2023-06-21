@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const db = require('./db');
 
 const RequestSchema = new mongoose.Schema({
     type: {type: String, require: true},

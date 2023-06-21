@@ -3,7 +3,6 @@ const createError = require('http-errors');
 const logger = require('morgan');
 const cors = require('cors');
 const {authenticateToken, requireRole} = require('./auth');
-const sendToRedis = require('./streams');
 if(process.env.NODE_ENV != 'production'){
     require('dotenv').config();
   }
@@ -18,7 +17,6 @@ const {weddingProxy} = require('./proxy/proxies');
 const {accountsProxy} = require('./proxy/proxies');
 const {postProxy} = require('./proxy/proxies');
 const {notificationProxy} = require('./proxy/proxies');
-const {scheduleProxy} = require('./proxy/proxies');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -34,7 +32,6 @@ app.use('/users/login', authenticateToken, accountsProxy);
 app.use('/login', accountsProxy);
 app.use('/post', authenticateToken, requireRole(['Admin']), postProxy);
 app.use('/stat', authenticateToken, postProxy);
-app.use('/schedule', scheduleProxy);
 app.use('/notification', notificationProxy);
 
 app.use('/request', request);

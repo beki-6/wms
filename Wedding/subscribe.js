@@ -3,11 +3,17 @@ const redisClient = redis.createClient();
 
 const subscriber = redisClient.duplicate();
 
+let messages = [];
+
 const subscribe = async () => {
     await subscriber.connect();
     await subscriber.subscribe('weddingChannel', message => {
-        console.log(message);
+        messages.push(message);
     });
 }
 
-module.exports = subscribe;
+function sendMessages(){
+    return messages;
+}
+
+module.exports = {subscribe, sendMessages};

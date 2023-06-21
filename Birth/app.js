@@ -46,5 +46,7 @@ app.use(function(err, req, res, next) {
 app.listen(process.env.PORT, () => {
   console.log("Server running...");
 });
+
 subscribe();
+
 module.exports = app;

@@ -19,4 +19,12 @@ const requireRole = role => {
     }
 }
 
-module.exports = {authenticateToken, requireRole};
+function generateToken(user){
+    return jwt.sign(
+        {id: user._id, username: user.username, role: user.role},
+        process.env.TOKEN_KEY,
+        {expiresIn: '1h'}
+    );
+  }
+
+module.exports = {authenticateToken, requireRole, generateToken};

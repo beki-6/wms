@@ -1,0 +1,20 @@
+{
+  "name": "wms-backend-services-master",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "startAccounts": "node ./Accounts/app.js",
+    "startBirth": "node ./Birth/app.js",
+    "startWedding": "node ./Wedding/app.js",
+    "startResidents": "node ./Residents/app.js",
+    "startNotification": "node ./Notification/app.js",
+    "startGateway": "node ./Gateway/app.js",
+    "startPosts": "node ./PostsAndStats/app.js",
+    "startDeath": "node ./Death/app.js",
+    "startAll": "npm run startAccounts startBirth startWedding startDeath startNotification startResidents startPosts"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

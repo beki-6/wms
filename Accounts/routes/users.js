@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
 const bcrypt = require('bcryptjs');
-const {generateToken} = require('./apiRoutes');
+const {authenticateToken, generateToken} = require('../auth');
 
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
@@ -19,9 +19,7 @@ router.post('/signup', async () => {
   const newUser = await User.create({
       username: username,
       phone: phone,
-      password: hashedPassword,
-      role: role,
-      photo: photo
+      password: hashedPassword
   });
   if(!newUser){
       return res.status(400).json({message: "User registration failed"});
@@ -36,9 +34,10 @@ router.post('/signup', async () => {
       token: generateToken(newUser)  
   });
 });
-router.post('/login', async (req, res) => {
+router.post('/login', authenticateToken, async (req, res) => {
   const {phone, password} = req.body;
-  const user = await Staff.findOne({phone});
+  const user = await User.findOne({phone});
+  console.log(user);
   if(!user) return res.status(400).json({message: "user not found"});
   const valid = await bcrypt.compare(password, user.password);
   if(!valid) return res.status(400).json({message: "Invalid credentials"});

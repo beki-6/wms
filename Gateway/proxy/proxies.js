@@ -28,10 +28,6 @@ const notificationProxy = createProxyMiddleware({
     target: 'http://localhost:3006/api',
     changeOrigin: true
 });
-const scheduleProxy = createProxyMiddleware({
-    target: 'http://localhost:3007/api',
-    changeOrigin: true
-});
 const proxies = {
     residentProxy,
     birthProxy,
@@ -39,7 +35,6 @@ const proxies = {
     weddingProxy,
     accountsProxy,
     postProxy,
-    notificationProxy,
-    scheduleProxy
+    notificationProxy
 }
 module.exports = proxies;

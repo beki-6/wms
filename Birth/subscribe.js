@@ -8,9 +8,12 @@ let messages = [];
 const subscribe = async () => {
     await subscriber.connect();
     await subscriber.subscribe('birthChannel', message => {
-        // messages.push(message);
-        console.log(message);
+        messages.push(message);
     });
 }
 
-module.exports = {subscribe, messages};
+function sendMessages(){
+    return messages;
+}
+
+module.exports = {subscribe, sendMessages};
