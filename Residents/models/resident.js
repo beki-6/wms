@@ -8,8 +8,8 @@ const AddressSchema = new mongoose.Schema({
   phoneNumber: { type: String, require: true, minLength: 10, maxLength: 10 },
 });
 const WitnessSchema = new mongoose.Schema({
-  name: { type: String, require: true},
-  idNumber: { type: String, require: true},
+  name: { type: String, require: true },
+  idNumber: { type: String, require: true },
   phoneNumber: { type: String, require: true, minLength: 10, maxLength: 10 },
 });
 const ResidentSchema = new mongoose.Schema({
@@ -26,12 +26,7 @@ const ResidentSchema = new mongoose.Schema({
   educationLevel: {
     type: String,
     require: true,
-    enum: [
-      "uneducated",
-      "college graduate",
-      "undergraduate",
-      "high school diploma",
-    ],
+    enum: ["high-scholl", "college", "graduate"],
   },
   occupation: { type: String, require: true },
   phoneNumber: { type: String, require: true, minLength: 10, maxLength: 10 },
@@ -42,21 +37,24 @@ const ResidentSchema = new mongoose.Schema({
     minLength: 10,
     maxLength: 10,
   },
-  witness: {type: WitnessSchema, require: true}
+  witness: { type: WitnessSchema, require: true },
 });
 
 const IdSchema = new mongoose.Schema({
   personalInformation: {
-    firstName: {type: String, require: true},
-    middleName: {type: String, require: true},
-    lastName: {type: String, require: true},
-    firstName: {type: String, require: true},
-    nationality: {type: String, require: true},
-    address: {type: String, require: true},
-    religion: {type: String, require: true},
-    martialStatus: {type: String, require: true, enum:['married', 'unmarried']},
-    gender: {type: String, require: true, enum:['male', 'female']},
-    dateOfBirth: {type: Date, require: true}
+    firstName: { type: String, require: true },
+    middleName: { type: String, require: true },
+    lastName: { type: String, require: true },
+    nationality: { type: String, require: true },
+    address: { type: String, require: true },
+    religion: { type: String, require: true },
+    martialStatus: {
+      type: String,
+      require: true,
+      enum: ["married", "unmarried", "divorce"],
+    },
+    gender: { type: String, require: true, enum: ["male", "female"] },
+    dateOfBirth: { type: Date, require: true },
   },
   idNumber: String,
   dateIssued: { type: Date, require: true, default: Date.now },
