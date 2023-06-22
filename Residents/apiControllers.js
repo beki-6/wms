@@ -1,6 +1,6 @@
 const { Resident, Id } = require("./models/resident");
 const { requireRole } = require("./auth");
-const { sendMessages } = require("./subscribe");
+const {pendingID, pendingResident} = require('./models/pending');
 const redis = require("redis");
 const redisClient = redis.createClient();
 const publisher = redisClient.duplicate();
@@ -15,13 +15,12 @@ const getAllResidents = async (req, res) => {
 };
 
 const pendingResidentialRegistrationRequests = async (req, res) => {
-  const pendingMessage = { message: sendMessages() };
-  //   const pending = JSON.parse(sendMessages());
-  res.status(200).json(pendingMessage);
+  const pendingMessages = await pendingResident.find();
+  res.status(200).json(pendingMessages);
 };
 const pendingIDRequests = async (req, res) => {
-  const pending = JSON.parse(sendMessages());
-  res.status(200).json(pending);
+  const pendingRequests = await pendingID.find();
+  res.status(200).json(pendingRequests);
 };
 
 const postResident = async (req, res) => {

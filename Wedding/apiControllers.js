@@ -1,5 +1,5 @@
 const Wedding = require("./models/wedding");
-const { sendMessages } = require("./subscribe");
+const Pending = require("./models/pending");
 
 const getAllWedding = async (req, res) => {
   try {
@@ -11,7 +11,7 @@ const getAllWedding = async (req, res) => {
 };
 
 const pendingWedding = async (req, res) => {
-  const pending = JSON.parse(sendMessages());
+  const pending = await Pending.find();
   res.status(200).json(pending);
 };
 

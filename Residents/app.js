@@ -2,7 +2,8 @@ const createError = require("http-errors");
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
-const { subscribe } = require("./subscribe");
+const subscribeID = require("./subscribeID");
+const subscribeResident = require("./subscribeResident");
 if (process.env.NODE_ENV != "production") {
   require("dotenv").config();
 }
@@ -43,5 +44,6 @@ app.use(function (err, req, res, next) {
 app.listen(process.env.PORT, () => {
   console.log("Server running...");
 });
-subscribe();
+subscribeID();
+subscribeResident();
 module.exports = app;

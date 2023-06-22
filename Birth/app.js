@@ -6,7 +6,7 @@ const logger = require("morgan");
 if (process.env.NODE_ENV != "production") {
   require("dotenv").config();
 }
-const { subscribe } = require("./subscribe");
+const subscribe = require("./subscribe");
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const apiRouter = require("./routes/apiRoutes");

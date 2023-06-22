@@ -1,5 +1,5 @@
 const Death = require('./models/death');
-const {sendMessages} = require('./subscribe');
+const Pending = require('./models/pending')
 
 const getAllDeath = async (req, res) => {
     try{
@@ -11,7 +11,7 @@ const getAllDeath = async (req, res) => {
 }
 
 const pendingDeaths = async (req, res) => {
-    const pending = JSON.parse(sendMessages());
+    const pending = await Pending.find();
     res.status(200).json(pending);
 }
 

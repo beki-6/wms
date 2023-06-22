@@ -1,4 +1,5 @@
 const Birth = require('./models/birth');
+const Pending = require('./models/pending');
 
 const redis = require('redis');
 const redisClient = redis.createClient();
@@ -15,7 +16,7 @@ const getAllBirths = async (req, res) => {
 }
 
 const pendingBirths = async (req, res) => {
-    const pending = JSON.parse(sendMessages());
+    const pending = await Pending.find();
     res.status(200).json(pending);
 }
 
