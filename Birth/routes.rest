@@ -6,7 +6,7 @@ GET http://localhost:3000/api/birth/646e1528bfde8e7a48d23adf
 DELETE http://localhost:3000/api/birth/646e14ce4aa2c1d1a99f4cab
 
 #########
-POST http://localhost:3000/api/birth
+POST http://localhost:3001/api/birth
 Content-Type: application/json
 
 {

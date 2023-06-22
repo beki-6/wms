@@ -1,9 +1,9 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const RequestSchema = new mongoose.Schema({
-    type: {type: String, require: true},
-    requester: {type: mongoose.Schema.Types.ObjectId, require: true},
-    body: {type: JSON, require: true}
+  type: { type: String, require: true },
+  requester: { type: String, require: true },
+  body: { type: JSON, require: true },
 });
 
-module.exports = mongoose.model('Request', RequestSchema);
+module.exports = mongoose.model("Request", RequestSchema);
