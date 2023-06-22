@@ -1,14 +1,14 @@
-const mongoose = require('mongoose');
-const db = require('./db');
+const mongoose = require("mongoose");
+const db = require("./db");
 
 const DeathSchema = new mongoose.Schema({
-    deceasedResidentInfo: {type: mongoose.Schema.Types.ObjectId, require: true, ref: 'Resident'},
-    dateOfDeath: {type: Date, require: true, default: Date.now },
-    placeOfDeath: {type: String, require: true},
-    dateOfCertificateIssued: {type: Date, require: true, default: Date.now},
-    dateOfDeathRegistration: {type: Date, require: true, default: Date.now},
-    nameOfCivilRegistrar: {type: String, require: true},
-    certificateNumber: {type: String, require: true}
+  firstName: { type: String, require: true },
+  middleName: { type: String, require: true },
+  lastName: { type: String, require: true },
+  placeOfDeath: { type: String, require: true },
+  reasonOfDeath: { type: String, require: true },
+  dateOfBirth: { type: Date, require: true },
+  age: { type: Number, require: true },
 });
 
-module.exports = mongoose.model('Death', DeathSchema);
+module.exports = mongoose.model("Death", DeathSchema);
