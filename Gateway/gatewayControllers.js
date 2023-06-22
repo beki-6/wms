@@ -25,9 +25,7 @@ const postRequest = async (req, res) => {
     body: req.body.body,
   });
   try {
-    res.sendStatus(200);
-    if (newRequest.type === "birth")
-      publisher.publish("birthChannel", JSON.stringify(newRequest));
+    if (newRequest.type === "birth") await publisher.publish("birthChannel", JSON.stringify(newRequest));
     else if (newRequest.type === "wedding")
       publisher.publish("weddingChannel", JSON.stringify(newRequest));
     else if (newRequest.type === "resident" || newRequest.type === "id")

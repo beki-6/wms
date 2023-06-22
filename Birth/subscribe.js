@@ -3,18 +3,12 @@ const redisClient = redis.createClient();
 const Pending = require('./models/pending');
 const subscriber = redisClient.duplicate();
 
-let messages = [];
-
 const subscribe = async () => {
     await subscriber.connect();
-    await subscriber.subscribe('birthChannel', message => {
-        messages.push(message);
-    });
-    while(messages.length > 0){
-        let message = messages.pop();
-        const pending = new Pending(message);
+    await subscriber.subscribe('birthChannel', async message => {
+        const pending = new Pending(JSON.parse(message));
         await pending.save();
-    }
+    });
 }
 
 module.exports = subscribe;

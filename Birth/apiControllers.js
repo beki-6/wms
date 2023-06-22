@@ -4,7 +4,6 @@ const Pending = require('./models/pending');
 const redis = require('redis');
 const redisClient = redis.createClient();
 const publisher = redisClient.duplicate();
-const {sendMessages} = require('./subscribe');
 
 const getAllBirths = async (req, res) => {
     try{
@@ -18,6 +17,7 @@ const getAllBirths = async (req, res) => {
 const pendingBirths = async (req, res) => {
     const pending = await Pending.find();
     res.status(200).json(pending);
+    console.log(pending);
 }
 
 const postBirth = async (req, res) => {
