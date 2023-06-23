@@ -5,6 +5,7 @@ const DeathSchema = new mongoose.Schema({
   firstName: { type: String, require: true },
   middleName: { type: String, require: true },
   lastName: { type: String, require: true },
+  dateOfDeath: {type: Date, require: true},
   placeOfDeath: { type: String, require: true },
   reasonOfDeath: { type: String, require: true },
   dateOfBirth: { type: Date, require: true },

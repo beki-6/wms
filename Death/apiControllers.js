@@ -17,13 +17,14 @@ const pendingDeaths = async (req, res) => {
 
 const postDeath = async (req, res) => {
     const newdeath = new Death({
-      deceasedResidentInfo: req.body.deceasedResidentInfo,
+      firstName: req.body.firstName,
+      middleName: req.body.middleName,
+      lastName: req.body.lastName,
       dateOfDeath: req.body.dateOfDeath,
       placeOfDeath: req.body.placeOfDeath,
-      dateOfCertificateIssued: req.body.dateOfCertificateIssued,
-      dateOfDeathRegistration: req.body.dateOfDeathRegistration,
-      nameOfCivilRegistrar: req.body.nameOfCivilRegistrar,
-      certificateNumber: req.body.certificateNumber
+      reasonOfDeath: req.body.reasonOfDeath,
+      dateOfBirth: req.body.dateOfBirth,
+      age: req.body.age      
     });
     try{
       const death = await newdeath.save();

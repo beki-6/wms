@@ -26,7 +26,7 @@ const ResidentSchema = new mongoose.Schema({
   educationLevel: {
     type: String,
     require: true,
-    enum: ["high-scholl", "college", "graduate"],
+    enum: ["uneducated", "high-school", "college", "graduate"],
   },
   occupation: { type: String, require: true },
   phoneNumber: { type: String, require: true, minLength: 10, maxLength: 10 },

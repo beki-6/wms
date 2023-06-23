@@ -40,7 +40,7 @@ const postResident = async (req, res) => {
     phoneNumber: req.body.phoneNumber,
     religion: req.body.religion,
     emergencyContact: req.body.emergencyContact,
-    scheduleDate: req.body.scheduleDate,
+    witness: req.body.witness,
   });
   try {
     const resident = await newResident.save();
@@ -134,7 +134,15 @@ const getAllIds = async (req, res) => {
 
 const postNewId = async (req, res) => {
   const newId = new Id({
-    residentInfo: req.body.residentInfo,
+    firstName: req.body.firstName,
+    middleName: req.body.middleName,
+    lastName: req.body.lastName,
+    nationality: req.body.nationality,
+    address: req.body.address,
+    religion: req.body.religion,
+    maritalStatus: req.body.maritalStatus,
+    gender: req.body.gender,
+    dateOfBirth: req.body.dateOfBirth,
     idNumber: req.body.idNumber,
     registrationNumber: req.body.registrationNumber,
     dateIssued: req.body.dateIssued,

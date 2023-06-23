@@ -22,7 +22,9 @@ const pendingBirths = async (req, res) => {
 
 const postBirth = async (req, res) => {
     const newbirth = new Birth({
-        nameOfChild: req.body.nameOfChild,
+        firstName: req.body.firstName,
+        middleName: req.body.middleName,
+        lastName: req.body.lastName,
         sex: req.body.sex,
         dateOfBirth: req.body.dateOfBirth,
         placeOfBirth: req.body.placeOfBirth,
