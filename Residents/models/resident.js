@@ -8,9 +8,9 @@ const AddressSchema = new mongoose.Schema({
   phoneNumber: { type: String, require: true, minLength: 10, maxLength: 10 },
 });
 const WitnessSchema = new mongoose.Schema({
-  name: { type: String, require: true },
-  idNumber: { type: String, require: true },
-  phoneNumber: { type: String, require: true, minLength: 10, maxLength: 10 },
+  witnessName: { type: String, require: true },
+  witnessID: { type: String, require: true },
+  witnessPhone: { type: String, require: true, minLength: 10, maxLength: 10 },
 });
 const ResidentSchema = new mongoose.Schema({
   name: { type: String, require: true },
