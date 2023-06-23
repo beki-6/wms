@@ -1,7 +1,4 @@
 const Notification = require("./models/notification");
-// const redis = require('redis');
-// const redisClient = redis.createClient();
-const { sendMessages } = require("./subscribe");
 
 const getAllNotifications = async (req, res) => {
   try {
@@ -13,7 +10,6 @@ const getAllNotifications = async (req, res) => {
 };
 
 const postNotification = async (req, res) => {
-  const messages = sendMessages();
   const newNotification = new Notification({
     user: req.body.user,
     body: req.body.body,

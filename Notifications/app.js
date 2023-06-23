@@ -2,7 +2,7 @@ const createError = require("http-errors");
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
-const { subscribe } = require("./subscribe");
+const subscribe = require("./subscribe");
 if (process.env.NODE_ENV != "production") {
   require("dotenv").config();
 }

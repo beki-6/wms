@@ -1,13 +1,13 @@
 const redis = require('redis');
 const redisClient = redis.createClient();
-const Pending = require('./models/pending');
+const Notification = require('./models/notification');
 const subscriber = redisClient.duplicate();
 
 const subscribe = async () => {
     await subscriber.connect();
     await subscriber.subscribe('notificationChannel', async message => {
-        const pending = new Pending(JSON.parse(message));
-        await pending.save();
+        const notification = new Notification(JSON.parse(message));
+        await notification.save();
     });
 }
 
