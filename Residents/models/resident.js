@@ -44,6 +44,7 @@ const IdSchema = new mongoose.Schema({
   personalInformation: {
     firstName: { type: String, require: true },
     middleName: { type: String, require: true },
+    age: { type: Number, require: true },
     lastName: { type: String, require: true },
     nationality: { type: String, require: true },
     address: { type: String, require: true },

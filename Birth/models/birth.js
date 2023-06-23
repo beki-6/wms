@@ -13,16 +13,16 @@ const BirthSchema = new mongoose.Schema({
   weight: { type: Number, require: true, min: 0 },
   attendantProfessional: { type: String, require: true },
   motherResidentInfo: {
-    firstName: { type: String, require: true },
-    lastName: { type: String, require: true },
-    address: { type: String, require: true },
-    phone: { type: String, require: true },
+    mfirstName: { type: String, require: true },
+    mlastName: { type: String, require: true },
+    maddress: { type: String, require: true },
+    mphone: { type: String, require: true },
   },
   fatherResidentInfo: {
-    firstName: { type: String, require: true },
-    lastName: { type: String, require: true },
-    address: { type: String, require: true },
-    phone: { type: String, require: true },
+    ffirstName: { type: String, require: true },
+    flastName: { type: String, require: true },
+    faddress: { type: String, require: true },
+    fphone: { type: String, require: true },
   },
 });
 
