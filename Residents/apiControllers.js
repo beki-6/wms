@@ -229,8 +229,8 @@ async function getIdByID(req, res, next) {
   next();
 }
 
-const getWitnessAndNotify = async (witness, requester) => {
-  const witnessPhone = witness.phoneNumber;
+const getWitnessAndNotify = async (resident, requester) => {
+  const witnessPhone = resident.phoneNumber;
   const witness = await Resident.findOne({witnessPhone});
   const notification = `Are you, ${witness.name}, willing to be a witness for ${requester.name} - 
   ${requester.phone}`;
