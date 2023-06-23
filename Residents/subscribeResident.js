@@ -8,6 +8,7 @@ const subscriber = redisClient.duplicate();
 const subscribeResident = async () => {
     await subscriber.connect();
     await subscriber.subscribe('residentChannel', async message => {
+        message = JSON.parse(message);
         const requester = {
             name: message.body.name,
             phone: message.body.phoneNumber

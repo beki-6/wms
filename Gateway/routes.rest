@@ -10,18 +10,25 @@ POST http://localhost:4000/request
 Content-Type: application/json
 
 {
-  "type": "birth",
-  "requester": "6464fa305496f5bffdad2a9e",
+  "type": "resident",
   "body": {
-    "nameOfChild": "Lucifer",
-    "sex": "M",
+    "name": "Lucifer",
+    "age": 6,
+    "fatherName": "God",
+    "grandFatherName": "----",
     "placeOfBirth": "Heaven",
-    "deliveryMethod": "Created by God Almighty",
-    "nationality": "Hell",
-    "weight": 666,
-    "attendantProfessional": "The Holy Spirit was in attendance the entire time",
-    "motherResidentInfo": "6464fa305496f5bffdad2a9e",
-    "fatherResidentInfo": "6465f6643b088cf9b06c3d17"
+    "sex": "M",
+    "address": "Hell",
+    "educationLevel": "graduate",
+    "occupation": "employed",
+    "religion": "Satanist",
+    "phoneNumber": "0938666666",
+    "emergencyContact": "0910000000",
+    "witness": {
+      "name": "God",
+      "idNumber": "06076076",
+      "phoneNumber": "0910000000"
+    }
   }
 }
 ######
