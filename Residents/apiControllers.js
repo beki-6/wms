@@ -46,7 +46,8 @@ const postResident = async (req, res) => {
     const resident = await newResident.save();
     res.status(201).json(resident);
     await publisher.connect();
-    publisher.publish("notificationChannel", JSON.stringify(newResident._id));
+    await publisher.publish("notificationChannel", JSON.stringify(newResident._id));
+    publisher.quit();
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
@@ -220,6 +221,16 @@ async function getIdByID(req, res, next) {
   next();
 }
 
+const getWitnessAndNotify = async (witness, requester) => {
+  const witnessPhone = witness.phoneNumber;
+  const witness = await Resident.findOne({witnessPhone});
+  const notification = `Are you, ${witness.name}, willing to be a witness for ${requester.name} - 
+  ${requester.phone}`;
+  await publisher.connect();
+  await publisher.publish('notificationChannel', notification);
+  publisher.quit();
+}
+
 const controllers = {
   getAllIds,
   postNewId,
@@ -235,6 +246,7 @@ const controllers = {
   postResident,
   pendingIDRequests,
   pendingResidentialRegistrationRequests,
+  getWitnessAndNotify
 };
 
 module.exports = controllers;

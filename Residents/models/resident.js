@@ -7,7 +7,11 @@ const AddressSchema = new mongoose.Schema({
   houseNumber: String,
   phoneNumber: { type: String, require: true, minLength: 10, maxLength: 10 },
 });
-
+const WitnessSchema = new mongoose.Schema({
+  name: { type: String, require: true},
+  idNumber: { type: String, require: true},
+  phoneNumber: { type: String, require: true, minLength: 10, maxLength: 10 },
+});
 const ResidentSchema = new mongoose.Schema({
   name: { type: String, require: true },
   age: { type: Number, require: true, min: 0 },
@@ -38,20 +42,23 @@ const ResidentSchema = new mongoose.Schema({
     minLength: 10,
     maxLength: 10,
   },
-  scheduleDate: {
-    type: Date,
-    require: true,
-  },
+  witness: {type: WitnessSchema, require: true}
 });
 
 const IdSchema = new mongoose.Schema({
-  residentInfo: {
-    type: mongoose.Schema.Types.ObjectId,
-    require: true,
-    ref: "Resident",
+  personalInformation: {
+    firstName: {type: String, require: true},
+    middleName: {type: String, require: true},
+    lastName: {type: String, require: true},
+    firstName: {type: String, require: true},
+    nationality: {type: String, require: true},
+    address: {type: String, require: true},
+    religion: {type: String, require: true},
+    martialStatus: {type: String, require: true, enum:['married', 'unmarried']},
+    gender: {type: String, require: true, enum:['male', 'female']},
+    dateOfBirth: {type: Date, require: true}
   },
   idNumber: String,
-  registrationNumber: String,
   dateIssued: { type: Date, require: true, default: Date.now },
   expiryDate: { type: Date, require: true, default: Date.now },
 });

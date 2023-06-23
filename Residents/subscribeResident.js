@@ -1,14 +1,18 @@
 const redis = require('redis');
 const {pendingResident} = require('./models/pending');
 const redisClient = redis.createClient();
+const getWitnessAndNotify = require('./apiControllers');
 
 const subscriber = redisClient.duplicate();
 
 const subscribeResident = async () => {
     await subscriber.connect();
-    await subscriber.subscribe('birthChannel', async message => {
-        const pending = new pendingResident(JSON.parse(message));
-        await pending.save();
+    await subscriber.subscribe('residentChannel', async message => {
+        const requester = {
+            name: message.body.name,
+            phone: message.body.phoneNumber
+        };
+        getWitnessAndNotify(message.body.witness, requester);
     });
 }
 
