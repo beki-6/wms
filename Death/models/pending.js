@@ -1,11 +1,10 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const PendingSchema = new mongoose.Schema({
-    type: String,
-    requester: String,
-    body: JSON
+  type: String,
+  body: JSON,
 });
 
-const Pending = mongoose.model('Pending', PendingSchema);
+const Pending = mongoose.model("Pending", PendingSchema);
 
 module.exports = Pending;

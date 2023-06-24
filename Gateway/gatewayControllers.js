@@ -25,11 +25,14 @@ const postRequest = async (req, res) => {
     body: req.body.body,
   });
   try {
-    if (newRequest.type === "birth") await publisher.publish("birthChannel", JSON.stringify(newRequest));
+    if (newRequest.type === "birth")
+      await publisher.publish("birthChannel", JSON.stringify(newRequest));
     else if (newRequest.type === "wedding")
       publisher.publish("weddingChannel", JSON.stringify(newRequest));
-    else if (newRequest.type === "resident" || newRequest.type === "id")
+    else if (newRequest.type === "resident")
       publisher.publish("residentChannel", JSON.stringify(newRequest));
+    else if (newRequest.type === "id")
+      publisher.publish("idChannel", JSON.stringify(newRequest));
     else if (newRequest.type === "account")
       publisher.publish("accountChannel", JSON.stringify(newRequest));
     else if (newRequest.type === "death")

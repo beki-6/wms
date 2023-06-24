@@ -47,20 +47,22 @@ Content-Type: application/json
   "password": "littleangel"
 }
 ######
-POST http://localhost:4000/birth
+POST http://localhost:4000/request
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OGVhOGRkMTFhOTEzNmY3Njk0NjIwZSIsInVzZXJuYW1lIjoiSGVsZW4iLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE2ODcxMDI4NTIsImV4cCI6MTY4NzEwNjQ1Mn0.dYJhr7PJXPAQ4wecVhWWBn9nvyi1YqS2ekm-mzl2aZU
 
 {
-    "nameOfChild": "Lucifer Morningstar",
-    "sex": "M",
-    "placeOfBirth": "Heaven",
-    "deliveryMethod": "Created by God Almighty",
-    "nationality": "Hell",
-    "weight": 666,
-    "attendantProfessional": "The Holy Spirit was in attendance the entire time",
-    "motherResidentInfo": "6464fa305496f5bffdad2a9e",
-    "fatherResidentInfo": "6465f6643b088cf9b06c3d17"
+    "type": "id",
+    "body": {
+      "nameOfChild": "Lucifer Morningstar",
+      "sex": "M",
+      "placeOfBirth": "Heaven",
+      "deliveryMethod": "Created by God Almighty",
+      "nationality": "Hell",
+      "weight": 666,
+      "attendantProfessional": "The Holy Spirit was in attendance the entire time",
+      "motherResidentInfo": "6464fa305496f5bffdad2a9e",
+      "fatherResidentInfo": "6465f6643b088cf9b06c3d17"
+    }
 }
 
 ######

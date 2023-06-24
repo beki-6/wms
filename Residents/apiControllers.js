@@ -1,6 +1,6 @@
 const { Resident, Id } = require("./models/resident");
 const { requireRole } = require("./auth");
-const {pendingID, pendingResident} = require('./models/pending');
+const { pendingID, pendingResident } = require("./models/pending");
 const redis = require("redis");
 const redisClient = redis.createClient();
 const publisher = redisClient.duplicate();
@@ -46,7 +46,10 @@ const postResident = async (req, res) => {
     const resident = await newResident.save();
     res.status(201).json(resident);
     await publisher.connect();
-    await publisher.publish("notificationChannel", JSON.stringify(newResident._id));
+    await publisher.publish(
+      "notificationChannel",
+      JSON.stringify(newResident._id)
+    );
     publisher.quit();
   } catch (err) {
     res.status(400).json({ message: err.message });
@@ -231,13 +234,19 @@ async function getIdByID(req, res, next) {
 
 const getWitnessAndNotify = async (resident, requester) => {
   const witnessPhone = resident.phoneNumber;
-  const witness = await Resident.findOne({witnessPhone});
-  const notification = `Are you, ${witness.name}, willing to be a witness for ${requester.name} - 
-  ${requester.phone}`;
+  const witness = await Resident.findOne({ witnessPhone });
+  let notification = {
+    user: requester,
+    body: "",
+  };
+  if (witness) {
+    notification.body = `Are you, ${witness.name}, willing to be a witness for ${requester.name} - 
+    ${requester.phone}`;
+  } else notification.body = "witness is not a registered resident";
   await publisher.connect();
-  await publisher.publish('notificationChannel', notification);
+  await publisher.publish("notificationChannel", JSON.stringify(notification));
   publisher.quit();
-}
+};
 
 const controllers = {
   getAllIds,
@@ -254,7 +263,7 @@ const controllers = {
   postResident,
   pendingIDRequests,
   pendingResidentialRegistrationRequests,
-  getWitnessAndNotify
+  getWitnessAndNotify,
 };
 
 module.exports = controllers;
