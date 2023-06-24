@@ -30,9 +30,9 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(cors());
 
-app.use("/resident", authenticateToken, residentProxy);
-app.use("/id", authenticateToken, residentProxy);
-app.use("/birth", authenticateToken, requireRole(["Admin", "VEP"]), birthProxy);
+app.use("/resident", residentProxy);
+app.use("/id", residentProxy);
+app.use("/birth", birthProxy);
 app.use("/death", authenticateToken, requireRole(["Admin", "VEP"]), deathProxy);
 app.use(
   "/wedding",
