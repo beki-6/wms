@@ -233,7 +233,7 @@ async function getIdByID(req, res, next) {
 }
 
 const getWitnessAndNotify = async (resident, requester) => {
-  const witnessPhone = resident.phoneNumber;
+  const witnessPhone = resident.witnessPhone;
   const witness = await Resident.findOne({ witnessPhone });
   let notification = {
     user: requester,

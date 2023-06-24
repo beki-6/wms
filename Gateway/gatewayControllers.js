@@ -21,24 +21,37 @@ const postRequest = async (req, res) => {
   await publisher.connect();
   const newRequest = new Request({
     type: req.body.type,
-    requester: req.body.requester,
     body: req.body.body,
   });
   try {
-    if (newRequest.type === "birth")
+    if (newRequest.type === "birth") {
       await publisher.publish("birthChannel", JSON.stringify(newRequest));
-    else if (newRequest.type === "wedding")
-      publisher.publish("weddingChannel", JSON.stringify(newRequest));
-    else if (newRequest.type === "resident")
-      publisher.publish("residentChannel", JSON.stringify(newRequest));
-    else if (newRequest.type === "id")
-      publisher.publish("idChannel", JSON.stringify(newRequest));
-    else if (newRequest.type === "account")
-      publisher.publish("accountChannel", JSON.stringify(newRequest));
-    else if (newRequest.type === "death")
-      publisher.publish("deathChannel", JSON.stringify(newRequest));
-    else console.log("No redis channel");
-    console.log("message published");
+      res.status(200).json({ message: "Form Sumbitted Successfully!!" });
+      console.log("message published");
+    } else if (newRequest.type === "wedding") {
+      await publisher.publish("weddingChannel", JSON.stringify(newRequest));
+      res.status(200).json({ message: "Form Sumbitted Successfully!!" });
+      console.log("message published");
+    } else if (newRequest.type === "resident") {
+      await publisher.publish("residentChannel", JSON.stringify(newRequest));
+      res.status(200).json({ message: "Form Sumbitted Successfully!!" });
+      console.log("message published");
+    } else if (newRequest.type === "id") {
+      await publisher.publish("idChannel", JSON.stringify(newRequest));
+      res.status(200).json({ message: "Form Sumbitted Successfully!!" });
+      console.log("message published");
+    } else if (newRequest.type === "account") {
+      await publisher.publish("accountChannel", JSON.stringify(newRequest));
+      res.status(200).json({ message: "Form Sumbitted Successfully!!" });
+      console.log("message published");
+    } else if (newRequest.type === "death") {
+      await publisher.publish("deathChannel", JSON.stringify(newRequest));
+      res.status(200).json({ message: "Form Sumbitted Successfully!!" });
+      console.log("message published");
+    } else {
+      console.log("No redis channel");
+      res.status(400).json({ message: "Something went wrong!!" });
+    }
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
