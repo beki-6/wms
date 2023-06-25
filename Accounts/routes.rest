@@ -42,3 +42,16 @@ Content-Type: application/json
         "646c87a10424bf9d998f03a6"
         ]
 }
+
+####
+
+POST http://localhost:3004/api/account/staff
+Content-Type: application/json
+
+{
+    "username": "AA",
+    "email": "dfdf@gmail.com",
+    "password": "1234342",
+    "role": "REP",
+    "phone": "0987654321"
+}

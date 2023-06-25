@@ -1,24 +1,29 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const {authenticateToken, requireRole, generateToken} = require('../auth');
-const controllers = require('../apiController');
+const { authenticateToken, requireRole, generateToken } = require("../auth");
+const controllers = require("../apiController");
 
 //GET all staffs
-router.get('/staff', authenticateToken, requireRole("Admin"), controllers.getAllStaff);
+router.get(
+  "/account/staff",
+  //   authenticateToken,
+  //   requireRole("Admin"),
+  controllers.getAllStaff
+);
 
 //POST a staff
-router.post('/staff', controllers.registerStaff);
+router.post("/account/staff", controllers.registerStaff);
 
 //GET a staff
-router.get('/staff/:id', controllers.getStaffById, controllers.getOneStaff);
+router.get("/staff/:id", controllers.getStaffById, controllers.getOneStaff);
 
 //UPDATE a staff
-router.patch('/staff/:id', controllers.getStaffById, controllers.updateStaff);
+router.patch("/staff/:id", controllers.getStaffById, controllers.updateStaff);
 
 //DELETE a staff
-router.delete('/staff/:id', controllers.deleteStaff);
+router.delete("/staff/:id", controllers.deleteStaff);
 
 //sign in staff
-router.post('/login', controllers.loginStaff);
+router.post("/login", controllers.loginStaff);
 
 module.exports = router;
