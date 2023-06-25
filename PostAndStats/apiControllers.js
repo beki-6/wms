@@ -26,7 +26,12 @@ const postNew = async (req, res) => {
 };
 
 const getOnePost = async (req, res) => {
-  res.status(200).json(res.post);
+  try {
+    const latestDocument = await Post.findOne().sort({ dateModified: -1 });
+    res.status(200).json(latestDocument.body);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
 };
 
 const updatePost = async (req, res) => {

@@ -43,7 +43,7 @@ app.use(
 app.use("/account", accountsProxy);
 app.use("/users/login", authenticateToken, accountsProxy);
 app.use("/login", accountsProxy);
-app.use("/post", authenticateToken, requireRole(["Admin"]), postProxy);
+app.use("/post", postProxy);
 app.use("/stat", authenticateToken, postProxy);
 app.use("/notification", notificationProxy);
 

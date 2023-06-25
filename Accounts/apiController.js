@@ -75,7 +75,7 @@ const updateStaff = async (req, res) => {
   }
   try {
     const updatedstaff = await res.staff.save();
-    res.json(updatedstaff);
+    res.status(200).json(updatedstaff);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }

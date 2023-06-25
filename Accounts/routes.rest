@@ -55,3 +55,16 @@ Content-Type: application/json
     "role": "REP",
     "phone": "0987654321"
 }
+
+######
+
+GET http://localhost:4000/birth/pending/count
+
+###
+POST http://localhost:3005/api/post
+Content-Type: application/json
+
+{
+    
+    "body": "There will be meeting this sunday!!!"
+}
