@@ -119,6 +119,22 @@ async function getBirthByID(req, res, next) {
   next();
 }
 
+const getNumberOfPendings = async (req, res) => {
+  try{
+    const countBirth = await Pending.countDocuments({type: 'birth'});
+    const countDeath = await Pending.countDocuments({type: 'death'});
+    const countWedding = await Pending.countDocuments({type: 'wedding'});
+    const count = {
+      birth: countBirth,
+      death: countDeath,
+      wedding: countWedding
+    }
+    res.status(200).json(count);
+  } catch(e){
+    res.status(400).json({message: e.message})
+  }
+}
+
 const controllers = {
   getAllBirths,
   pendingBirths,
@@ -127,6 +143,7 @@ const controllers = {
   updateBirth,
   deleteBirth,
   getBirthByID,
+  getNumberOfPendings
 };
 
 module.exports = controllers;

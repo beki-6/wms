@@ -8,6 +8,9 @@ router.get('/birth', controllers.getAllBirths);
 //GET pending birth requests
 router.get('/birth/pending', controllers.pendingBirths);
 
+//GET number of pending birth requests
+router.get('/birth/pending/count', controllers.getNumberOfPendings);
+
 //POST a birth
 router.post('/birth', controllers.postBirth);
 

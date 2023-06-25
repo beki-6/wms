@@ -8,7 +8,12 @@ router.get(
   "/resident/pending",
   controllers.pendingResidentialRegistrationRequests
 );
+router.get(
+  "/resident/pending/count",
+  controllers.getNumberOfPendingResidents
+);
 router.get("/id/pending", controllers.pendingIDRequests);
+router.get("/id/pending/count", controllers.getNumberOfPendingIds);
 //POST a resident
 router.post("/resident", controllers.postResident);
 //GET a resident

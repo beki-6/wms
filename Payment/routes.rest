@@ -1,17 +1,3 @@
-POST https://api.chapa.co/v1/transaction/initialize
-Content-Type: application/json
-Authorization: Bearer CHASECK_TEST-JAEozTjTjFG4I0GCDofb9EGnzkS1epZj
-
-{
-    "amount": "100",
-    "currency": "USD",
-    "email": "abebech_bekele@gmail.com",
-    "first_name": "Bilen",
-    "last_name": "Gizachew",
-    "phone_number": "0912345678",
-    "tx_ref": "chewatatest-6669",
-}
-
 #######
 POST http://localhost:3007/api/pay
 Content-Type: application/json
@@ -25,4 +11,4 @@ Content-Type: application/json
 }
 
 #######
-GET http://localhost:3007/api/verify
+GET http://localhost:3007/api/verify/0808

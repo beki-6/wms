@@ -248,6 +248,22 @@ const getWitnessAndNotify = async (resident, requester) => {
   publisher.quit();
 };
 
+const getNumberOfPendingIds = async (req, res) => {
+  try{
+    const count = await pendingID.countDocuments({});
+    res.status(200).json(count);
+  } catch(e){
+    res.status(400).json({message: e.message})
+  }
+}
+const getNumberOfPendingResidents = async (req, res) => {
+  try{
+    const count = await pendingResident.countDocuments({});
+    res.status(200).json(count);
+  } catch(e){
+    res.status(400).json({message: e.message})
+  }
+}
 const controllers = {
   getAllIds,
   postNewId,
@@ -264,6 +280,8 @@ const controllers = {
   pendingIDRequests,
   pendingResidentialRegistrationRequests,
   getWitnessAndNotify,
+  getNumberOfPendingResidents,
+  getNumberOfPendingIds
 };
 
 module.exports = controllers;
