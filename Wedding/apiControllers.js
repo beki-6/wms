@@ -1,5 +1,8 @@
 const Wedding = require("./models/wedding");
 const Pending = require("./models/pending");
+const redis = require('redis');
+const redisClient = redis.createClient();
+const publisher = redisClient.duplicate();
 
 const getAllWedding = async (req, res) => {
   try {
@@ -28,6 +31,7 @@ const postWedding = async (req, res) => {
   });
   try {
     const wedding = await newwedding.save();
+    await publisher.publish('statChannel', 'wedding');
     res.status(201).json(wedding);
   } catch (err) {
     res.status(400).json({ message: err.message });

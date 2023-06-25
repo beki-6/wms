@@ -37,12 +37,12 @@ const postBirth = async (req, res) => {
     weight: req.body.weight,
     attendantProfessional: req.body.attendantProfessional,
     motherResidentInfo: req.body.motherResidentInfo,
-    fatherResidentInfo: req.body.fatherResidentInfo,
+    fatherResidentInfo: req.body.fatherResidentInfo
   });
   try {
     const birth = await newbirth.save();
     await publisher.connect();
-    await publisher.publish("scheduleChannel", JSON.stringify());
+    await publisher.publish('statChannel', 'birth');
     res.status(201).json(birth);
   } catch (err) {
     res.status(400).json({ message: err.message });
