@@ -20,7 +20,6 @@ const registerStaff = async (req, res) => {
   if (staffExists) {
     return res.status(400).json({ message: "staff already exists" });
   }
-  console.log(password);
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
   try {

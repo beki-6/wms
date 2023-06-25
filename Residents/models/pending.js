@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const PendingResidentSchema = new mongoose.Schema({
   type: String,
   body: JSON,
+  witness: {type: Boolean, default: false},
+  transaction: {type: Boolean, default: false}
 });
 
 const PendingIDSchema = new mongoose.Schema({

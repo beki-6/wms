@@ -14,6 +14,24 @@ const getAllResidents = async (req, res) => {
   }
 };
 
+const handleWitnessResponse = async (req, res) => {
+  const {response, phone} = req.body;
+  if(response == 'accept'){
+    const request = await pendingResident.findOne({phone});
+    const updatedRequest = request;
+    updatedRequest.witness = true;
+    await updatedRequest.save();
+  }
+}
+const handlePayment = async (req, res) => {
+  const {response, phone} = req.body;
+  if(response == 'complete'){
+    const request = await pendingResident.findOne({phone});
+    const updatedRequest = request;
+    updatedRequest.transaction = true;
+    await updatedRequest.save();
+  }
+}
 const pendingResidentialRegistrationRequests = async (req, res) => {
   const pendingMessages = await pendingResident.find();
   res.status(200).json(pendingMessages);
@@ -281,7 +299,9 @@ const controllers = {
   pendingResidentialRegistrationRequests,
   getWitnessAndNotify,
   getNumberOfPendingResidents,
-  getNumberOfPendingIds
+  getNumberOfPendingIds,
+  handlePayment,
+  handleWitnessResponse
 };
 
 module.exports = controllers;
