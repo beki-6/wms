@@ -1,5 +1,8 @@
 const Death = require('./models/death');
-const Pending = require('./models/pending')
+const Pending = require('./models/pending');
+const redis = require('redis');
+const redisClient = redis.createClient();
+const publisher = redisClient.duplicate();
 
 const getAllDeath = async (req, res) => {
     try{
@@ -28,6 +31,7 @@ const postDeath = async (req, res) => {
     });
     try{
       const death = await newdeath.save();
+      await publisher.publish('statChannel', 'death');
       res.status(201).json(death);
     } catch(err){
       res.status(400).json({message: err.message});
