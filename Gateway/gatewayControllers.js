@@ -48,6 +48,10 @@ const postRequest = async (req, res) => {
       await publisher.publish("deathChannel", JSON.stringify(newRequest));
       res.status(200).json({ message: "Form Sumbitted Successfully!!" });
       console.log("message published");
+    } else if (newRequest.type === "complain") {
+      await publisher.publish("complaintChannel", JSON.stringify(newRequest));
+      res.status(200).json({ message: "Form Sumbitted Successfully!!" });
+      console.log("message published");
     } else {
       console.log("No redis channel");
       res.status(400).json({ message: "Something went wrong!!" });
