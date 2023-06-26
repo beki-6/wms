@@ -22,3 +22,12 @@ Content-Type: application/json
 {
     "registrationNumber": "8073240773489"
 }
+
+#####
+POST  http://localhost:3000/api/resident/witness
+Content-Type: application/json
+
+{
+    "phoneNumber": "0938844973",
+    "response": "accept"
+}

@@ -15,23 +15,28 @@ const getAllResidents = async (req, res) => {
 };
 
 const handleWitnessResponse = async (req, res) => {
-  const {response, phone} = req.body;
-  if(response == 'accept'){
-    const request = await pendingResident.findOne({phone});
-    const updatedRequest = request;
-    updatedRequest.witness = true;
-    await updatedRequest.save();
+  const { response, phoneNumber } = req.body;
+  if (response == "accept") {
+    const request = await pendingResident.findOne({ body: { phoneNumber } });
+    console.log(request);
+    if (request) {
+      const updatedRequest = request;
+      updatedRequest.witness = true;
+      await updatedRequest.save();
+    } else {
+      console.log("Req not found");
+    }
   }
-}
+};
 const handlePayment = async (req, res) => {
-  const {response, phone} = req.body;
-  if(response == 'complete'){
-    const request = await pendingResident.findOne({phone});
+  const { response, phone } = req.body;
+  if (response == "complete") {
+    const request = await pendingResident.findOne({ phone });
     const updatedRequest = request;
     updatedRequest.transaction = true;
     await updatedRequest.save();
   }
-}
+};
 const pendingResidentialRegistrationRequests = async (req, res) => {
   const pendingMessages = await pendingResident.find();
   res.status(200).json(pendingMessages);
@@ -267,21 +272,21 @@ const getWitnessAndNotify = async (resident, requester) => {
 };
 
 const getNumberOfPendingIds = async (req, res) => {
-  try{
+  try {
     const count = await pendingID.countDocuments({});
     res.status(200).json(count);
-  } catch(e){
-    res.status(400).json({message: e.message})
+  } catch (e) {
+    res.status(400).json({ message: e.message });
   }
-}
+};
 const getNumberOfPendingResidents = async (req, res) => {
-  try{
+  try {
     const count = await pendingResident.countDocuments({});
     res.status(200).json(count);
-  } catch(e){
-    res.status(400).json({message: e.message})
+  } catch (e) {
+    res.status(400).json({ message: e.message });
   }
-}
+};
 const controllers = {
   getAllIds,
   postNewId,
@@ -301,7 +306,7 @@ const controllers = {
   getNumberOfPendingResidents,
   getNumberOfPendingIds,
   handlePayment,
-  handleWitnessResponse
+  handleWitnessResponse,
 };
 
 module.exports = controllers;

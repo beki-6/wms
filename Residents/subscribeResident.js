@@ -14,7 +14,7 @@ const subscribeResident = async () => {
       phone: message.body.phoneNumber,
     };
     // save to pendingResidents
-    const pending = new pendingResident(JSON.parse(message));
+    const pending = new pendingResident(message);
     await pending.save();
     getWitnessAndNotify(message.body.witness, requester);
   });

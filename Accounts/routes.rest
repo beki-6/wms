@@ -1,4 +1,4 @@
-GET http://localhost:4000/account/staff
+GET http://localhost:3000/api/account
 
 #########
 GET http://localhost:3000/api/account/646f291ba5255bc92c59a32b
@@ -6,13 +6,12 @@ GET http://localhost:3000/api/account/646f291ba5255bc92c59a32b
 DELETE http://localhost:3000/api/account/646f291ba5255bc92c59a32b
 
 #########
-POST http://localhost:4000/account/staff
+POST http://localhost:3000/api/account
 Content-Type: application/json
 
 {
     "username": "Dream",
     "email": "dreammaker.com",
-    "phone": "0911707159",
     "password": "coolguywithcoolboots",
     "role": "VEP"
 }
@@ -69,3 +68,7 @@ Content-Type: application/json
     
     "body": "There will be meeting this sunday!!!"
 }
+
+###
+
+GET  http://localhost:3005/api/post/latest
