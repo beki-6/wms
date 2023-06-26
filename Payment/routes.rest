@@ -1,13 +1,9 @@
 #######
-POST http://localhost:3008/api/pay
+POST http://localhost:3008/api/transfer
 Content-Type: application/json
 
 {
-    "amount": "100",
-    "currency": "ETB",
-    "phone_number": "0912345678",
-    "first_name": "Bilen",
-    "last_name": "Gizachew"
+    "amount": "30"
 }
 
 #######

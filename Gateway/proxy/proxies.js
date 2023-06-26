@@ -25,7 +25,6 @@ const accountsProxy = createProxyMiddleware({
         if (req.headers["content-type"]) {
           proxyReq.setHeader("Content-Type", req.headers["content-type"]);
         }
-    
         // Forward the Content-Length header from the client request to the backend service
         if (req.headers["content-length"]) {
           proxyReq.setHeader("Content-Length", req.headers["content-length"]);

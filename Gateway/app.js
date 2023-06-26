@@ -40,7 +40,7 @@ app.use(
   requireRole(["Admin", "VEP"]),
   weddingProxy
 );
-app.post("/account", accountsProxy);
+app.use("/account", accountsProxy);
 app.use("/users/login", authenticateToken, accountsProxy);
 app.use("/login", accountsProxy);
 app.use("/post", postProxy);

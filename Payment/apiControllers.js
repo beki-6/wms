@@ -1,6 +1,7 @@
 const axios = require('axios');
 const Chapa_Endpoint = "https://api.chapa.co/v1/transaction/initialize";
 const Chapa_Verify = "https://api.chapa.co/v1/transaction/verify/";
+const Chapa_Transfer = "https://api.chapa.co/v1/transfers";
 const TEXT_REF = "tx-wms-" + Date.now();
 const CALLBACK_URL = "http://localhost:3008/api/verify/";
 const RETURN_URL = "http://localhost:3008/api/success";
@@ -8,13 +9,27 @@ const RETURN_URL = "http://localhost:3008/api/success";
 const header = { 
     headers: { 'Authorization': `Bearer ${process.env.API_SECRET}` }
 }
+
+const initiateTransfer = async (req, res) => {
+    const data = {
+        account_name: "Israel Goytom",
+        account_number: "32423423",
+        amount: req.body.amount,
+        currency: "ETB",
+        reference: TEXT_REF,
+        bank_code: "fe087651-4910-43af-b666-bbd393d8e81f"
+    }
+    const response = await axios.post(Chapa_Transfer, data, header);
+    if(response){
+        res.status(201).json(response.data);
+    }
+}
+
 const postTransactionData = async (req, res) => {  
     const data = {
-        amount: req.body.amount,
-        currency: req.body.currency,
-        phone_number: req.body.phone_number,
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
+        amount: "30",
+        currency: "ETB",
+        phone_number: req.body.userPhone,
         tx_ref: TEXT_REF,
         callback_url: CALLBACK_URL + TEXT_REF,
         return_url: RETURN_URL
@@ -45,7 +60,8 @@ const success = async (req, res) => {
 const controllers = {
     postTransactionData,
     verifyPayment,
-    success
+    success,
+    initiateTransfer
 }
 
 module.exports = controllers;

@@ -9,6 +9,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/api/verify/:id', controllers.verifyPayment);
 app.use('/api/pay', controllers.postTransactionData, controllers.verifyPayment, controllers.success);
 app.use('/api/success', controllers.success);
+app.use('/api/transfer', controllers.initiateTransfer);
 
 app.listen(process.env.PORT, () => {
     console.log('Server running...');
